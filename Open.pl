@@ -17,6 +17,8 @@ read_list([Char | List]) :-
 read_list([]).
 
 
+% Funcion que recibe una lista de caracteres (Numeros en ASCII) y
+% retorna una lista con estos numeros
 charToInt([Number | List], Res):-
 	Number > 48,
 	Number < 58,
@@ -24,7 +26,7 @@ charToInt([Number | List], Res):-
 	charToInt(List, Res1),
 	append([Number1], Res1, Res).
 
-charToInt([Number | List], Res):- charToInt(List, Res1), append(Res1,[], Res).
+charToInt([_ | List], Res):- charToInt(List, Res1), append(Res1,[], Res).
 
 
 charToInt([], []).
