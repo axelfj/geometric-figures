@@ -18,10 +18,13 @@ read_list([]).
 
 
 charToInt([Number | List], Res):-
+	Number > 48,
+	Number < 58,
 	Number1 is Number-48,
 	charToInt(List, Res1),
 	append([Number1], Res1, Res).
 
+charToInt([Number | List], Res):- charToInt(List, Res1), append(Res1,[], Res).
 
 
 charToInt([], []).

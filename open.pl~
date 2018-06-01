@@ -18,18 +18,10 @@ read_list([]).
 
 
 charToInt([Number | List], Res):-
-/*	Number > 48,
-	Number < 58,*/
-	write(Number),
 	Number1 is Number-48,
 	charToInt(List, Res1),
 	append([Number1], Res1, Res).
 
-/*interprate_List([Number | List], Res):-
-	Number < 49,
-	Number > 57,
-	write(Number),
-	interprate_List(List, Res).*/
 
 
 charToInt([], []).
