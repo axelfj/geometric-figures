@@ -1,26 +1,27 @@
-%  Lee los caracteres del input hasta llegar al final (hasta alcanzar la bandera eof)
+% Lee un archivo .txt y guarda su contenido en una lista.
+read_file(File, CharList, Res) :-
+	see(File),
+	read_list(CharList),
+	charToInt(CharList, Res),
+	seen.
 
-read_list([Char | List], Res) :-
+
+
+%Lee los caracteres del input hasta llegar al final (hasta alcanzar la bandera eof)
+
+read_list([Char | List]) :-
 	get0(Char),	 % Obtiene el valor ASCII del caracter.
-	write(Char),
 	Char =\= -1, !,  % Mientras no ha llegado al final del archivo
-	read_list(List, Res1),
-	interprate_List(Res1, Res).
+	read_list(List).
 
-read_list([], []).
+read_list([]).
 
 
-interprate_List([Number | List], Res):-
-/*	Number > 48,
-	Number < 58,*/
-	Number1 is Number+1,
-	interprate_List(List, Res1),
+charToInt([Number | List], Res):-
+	Number1 is Number-48,
+	charToInt(List, Res1),
 	append([Number1], Res1, Res).
 
-/*
-interprate_List([Number | List], Res):-
-	Number < 49,
-	Number > 57,
-	interprate_List(List, Res).*/
 
-interprate_List([], []).
+
+charToInt([], []).
