@@ -1,27 +1,27 @@
 quicksort([],[]).
 quicksort([X|Xs],Ys) :-
-  	partition(Xs,X,Left,Right),
-  	quicksort(Left,Ls),
-  	quicksort(Right,Rs),
-  	append(Ls,[X|Rs],Ys).
+	part(Xs,X,Left,Right),
+	quicksort(Left,Ls),
+	quicksort(Right,Rs),
+	append(Ls,[X|Rs],Ys).
 
-partition([],Y,[],[]).
-partition([X|Xs],Y,[X|Ls],Rs) :-
-  	X < Y, 
-    partition(Xs,Y,Ls,Rs).
-partition([X|Xs],Y,Ls,[X|Rs]) :-
-  	X > Y, 
-    partition(Xs,Y,Ls,Rs).
+part([],Y,[],[]).
+part([X|Xs],Y,[X|Ls],Rs) :-
+	X < Y,
+    part(Xs,Y,Ls,Rs).
+part([X|Xs],Y,Ls,[X|Rs]) :-
+	X > Y,
+    part(Xs,Y,Ls,Rs).
 
-append([X|Xs],Ys,[X|Zs]) :- 
+append([X|Xs],Ys,[X|Zs]) :-
     append(Xs,Ys,Zs).
 append([],Ys,Ys).
 
-initAux(Head, Tail, List):- 
-  	findall(Num, between(Head, Tail, Num), List).
+initAux(Head, Tail, List):-
+	findall(Num, between(Head, Tail, Num), List).
 
 cuantity(1, 1):-!.
-cuantity(X, Res):- 
+cuantity(X, Res):-
     X1 is X-1,
     cuantity(X1, Res1),
     Res is Res1 + X.
@@ -48,7 +48,7 @@ triangleAux(X,Y,Z):-
     Res3 is XX1-X,
     Res4 is ZZ1-Z,
     Res3 = Res4.
- 
+
 triangle(N,M,O):-
     triangleAux(N,M,O), true;
     false.
@@ -72,19 +72,19 @@ parallelogram(A,B,C,D):-
 
 hexagon(A,B,C,D,E,F):- !.
 
-depth(X, Cont, Res):- 
-    X >= Cont, 
-    cuantity(Cont, Max), 
-    X =< Max,  
+depth(X, Cont, Res):-
+    X >= Cont,
+    cuantity(Cont, Max),
+    X =< Max,
     Res is Cont.
-depth(X, Cont, Res):- 
-    Cont1 is Cont + 1, 
-    depth(X, Cont1, Res1), 
+depth(X, Cont, Res):-
+    Cont1 is Cont + 1,
+    depth(X, Cont1, Res1),
     Res is Res1.
 /*initTriangle(1,[[1]]).
 initTriangle(N,List):-
     cuantity(N, N2),
-    N1 is N2-N+1,   
+    N1 is N2-N+1,
     initAux(N1,N2,Res),
     N3 is N-1,
     initTriangle(N3, Res1),
