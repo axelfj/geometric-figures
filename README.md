@@ -1,2 +1,9 @@
-# P03-LOG
-Definir a partir de vértices si se forma una figura geometrica.
+# Figuras Geométricas
+
+Determinar si se forman ciertas figuras geométricas según los puntos ingresados en el sistema.
+
+## Créditos
+
+- [Andrés Brenes](https://github.com/brends31)
+
+- [Axel Fernández](https://github.com/axelfez) 
